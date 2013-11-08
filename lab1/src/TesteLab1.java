@@ -33,6 +33,7 @@ public class TesteLab1 {
 		assertEquals("dez mil e quinhentos", a.converte(10500));
 		assertEquals("dezenove mil", a.converte(19000));
 		assertEquals("novecentos e noventa e nove mil", a.converte(999000));
+		assertEquals("novecentos e noventa e nove mil quinhentos e dois", a.converte(999502));
 	}
 
 }

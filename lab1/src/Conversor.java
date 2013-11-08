@@ -30,9 +30,10 @@ public class Conversor {
 			return converteEntre2000e9999(numero);
 		} else if (10000 <= numero && numero <= 999999){
 			return converteEntre10000e999999(numero);
-		}
-
-		return "FUUU!";
+		} else if (1000000 <= numero && numero <= 9999999){
+			return converteEntre1000000e9999999(numero);
+		} else
+			return "um bilhao";
 	}
 		
 		private String coverteMenorQue19(int numero){
@@ -123,5 +124,30 @@ public class Conversor {
 			else
 				nome.append(converte(Integer.parseInt("1" + parte1.toString())));
 			return nome.toString();
+		}
+		
+		private String converteEntre1000000e9999999(int numero){
+			StringBuilder nome = new StringBuilder();
+			StringBuilder parte1 = new StringBuilder();
+			StringBuilder parte2 = new StringBuilder();
+			int cont = 0;
+			String n = Integer.toString(numero);
+			String[] s = n.split("");
+			for (int i = s.length - 1; i > 0; i--) {
+				if(cont < 6)
+					parte1.append(s[i]);
+				else
+					parte2.append(s[i]);
+				cont++;
+			}
+			parte1.reverse();
+			parte2.reverse();
+			if(Integer.parseInt(parte2.toString()) == 1)
+				nome.append("um milhao ");
+			else
+				nome.append(converte(Integer.parseInt(parte2.toString())) + " milhoes ");
+			if(Integer.parseInt(parte1.toString())!= 0)
+				nome.append(converte(Integer.parseInt(parte1.toString())));
+			return nome.toString();	
 		}
 }
